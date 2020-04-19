@@ -11,6 +11,9 @@ export const MenuItemContainer = styled.div`
   border: 1px solid black;
   margin: 0 7.5px 15px;
   overflow: hidden;
+  @media only screen and (max-width: 768px) {
+    height: 380px;
+  }
 
   &:hover {
     cursor: pointer;

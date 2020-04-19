@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const CollectionPreviewContainer = styled.div`
   display: flex;
@@ -17,6 +17,8 @@ export const TitleContainer = styled.h1`
 `;
 
 export const PreviewContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: space-between;
+  gap: 1vw;
 `;
