@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const CheckoutPageContainer = styled.div`
   width: 55%;
@@ -7,6 +7,9 @@ export const CheckoutPageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 50px auto 0;
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
 
   button {
     margin-left: auto;
@@ -25,6 +28,9 @@ export const CheckoutHeaderContainer = styled.div`
 export const HeaderBlockContainer = styled.div`
   text-transform: capitalize;
   width: 23%;
+  @media only screen and (max-width: 768px) {
+    font-size: 16px;
+  }
 
   &:last-child {
     width: 8%;
