@@ -9,7 +9,7 @@ import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 import CheckoutPage from "./pages/checkout/checkout.component";
 
-function App({ setCurrentUser, currentUser }) {
+function App({ currentUser }) {
   return (
     <div>
       <Header />
@@ -32,6 +32,4 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
 });
 
-const mapDispatchToProps = (dispatch) => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
