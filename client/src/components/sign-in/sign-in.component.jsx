@@ -19,11 +19,10 @@ const SignIn = ({ googleSignInStart, emailSignInStart }) => {
     email: "",
     password: "",
   });
+  const { email, password } = userData;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { email, password } = userData;
-
     emailSignInStart(email, password);
   };
 
@@ -36,20 +35,19 @@ const SignIn = ({ googleSignInStart, emailSignInStart }) => {
     <SignInContainer>
       <SignInTitle>I already have an account</SignInTitle>
       <span>Sign in with your email and password</span>
-
       <form onSubmit={handleSubmit}>
         <FormInput
           name="email"
           type="email"
           handleChange={handleChange}
-          value={userData.email}
+          value={email}
           label="email"
           required
         />
         <FormInput
           name="password"
           type="password"
-          value={userData.password}
+          value={password}
           handleChange={handleChange}
           label="password"
           required

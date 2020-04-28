@@ -14,10 +14,10 @@ const SignUp = ({ signUpStart }) => {
     password: "",
     confirmPassword: "",
   });
+  const { displayName, email, password, confirmPassword } = userData;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { displayName, email, password } = userData;
 
     if (password !== confirmPassword) {
       alert("passwords don't match");
@@ -32,7 +32,6 @@ const SignUp = ({ signUpStart }) => {
     setUserData({ ...userData, [name]: value });
   };
 
-  const { displayName, email, password, confirmPassword } = userData;
   return (
     <SignUpContainer>
       <SignUpTitle>I do not have a account</SignUpTitle>
