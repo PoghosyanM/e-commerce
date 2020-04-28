@@ -2,7 +2,9 @@
   "name": "e-commerce",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
+    "axios": "^0.19.2",
     "firebase": "^7.14.0",
     "heroku-cli": "^7.0.9",
     "node-sass": "^4.13.1",
