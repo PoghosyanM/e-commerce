@@ -7,6 +7,7 @@ import CollectionPreview from "../collection-preview/collection-preview.componen
 import { selectCollectionsForPreview } from "../../redux/shop/shop.selectors";
 
 import { CollectionsOverviewContainer } from "./collections-overview.styles";
+import WithSpinner from "../with-spinner/with-spinner.component";
 
 const CollectionsOverview = ({ collections }) => (
   <CollectionsOverviewContainer>
@@ -20,4 +21,4 @@ const mapStateToProps = createStructuredSelector({
   collections: selectCollectionsForPreview,
 });
 
-export default connect(mapStateToProps)(CollectionsOverview);
+export default connect(mapStateToProps)(WithSpinner(CollectionsOverview));

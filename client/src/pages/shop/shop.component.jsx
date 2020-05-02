@@ -1,19 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense, lazy } from "react";
 import { Route } from "react-router-dom";
-
-import CollectionsOverview from "../../components/collections-overview/collections-overview.component";
-import CollectionPage from "../collection/collection.component";
 import { fetchCollectionsStart } from "../../redux/shop/shop.actions";
 import { connect } from "react-redux";
-import WithSpinner from "../../components/with-spinner/with-spinner.component";
 import { createStructuredSelector } from "reselect";
 import {
   selectIsCollectionsFetching,
   selectIsCollectionsLoaded,
 } from "../../redux/shop/shop.selectors";
+import Spinner from "../../components/spinner/spinner.component";
 
-const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
-const CollectionPageWithSpinner = WithSpinner(CollectionPage);
+const CollectionsOverview = lazy(() =>
+  import("../../components/collections-overview/collections-overview.component")
+);
+const CollectionPage = lazy(() => import("../collection/collection.component"));
 
 const ShopPage = ({
   match,
@@ -27,25 +26,21 @@ const ShopPage = ({
 
   return (
     <div className="shop-page">
-      <Route
-        exact
-        path={`${match.path}`}
-        render={(props) => (
-          <CollectionsOverviewWithSpinner
-            isLoading={isCollectionFetching}
-            {...props}
-          />
-        )}
-      />
-      <Route
-        path={`${match.path}/:collectionId`}
-        render={(props) => (
-          <CollectionPageWithSpinner
-            isLoading={!isCollectionLoaded}
-            {...props}
-          />
-        )}
-      />
+      <Suspense fallback={<Spinner />}>
+        <Route
+          exact
+          path={`${match.path}`}
+          render={(props) => (
+            <CollectionsOverview isLoading={isCollectionFetching} {...props} />
+          )}
+        />
+        <Route
+          path={`${match.path}/:collectionId`}
+          render={(props) => (
+            <CollectionPage isLoading={!isCollectionLoaded} {...props} />
+          )}
+        />
+      </Suspense>
     </div>
   );
 };
